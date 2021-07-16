@@ -1,26 +1,32 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+import Utility.utilityForContact;
 
 public class AddressBookMain {
 
-	//getting command line arguments
+	// getting command line arguments
 	public static void main(String[] args) {
+
+		
 		Person person = new Person();
-		int i = 0;
+		
+		// setting value to variables
+		person.setValue();
+		person.setObj(person);
 
-		//setting value to variables
-		person.setFirstName(args[i++]);
-		person.setLastName(args[i++]);
-		person.setAddress(args[i++]);
-		person.setCityName(args[i++]);
-		person.setStateName(args[i++]);
-		person.setZipCode(args[i++]);
-		person.setPhoneNumber(args[i++]);
-		person.setEmailAddress(args[i++]);
+		Person person1 = new Person();
 
-		//displaying person contact
-		System.out.println("first Name ::" + person.getFirstName() + " Last Name ::" + person.getLastName()
-				+ " address ::" + person.getAddress() + " city Name ::" + person.getCityName() + "\nstate Name ::"
-				+ person.getStateName() + " zip ::" + person.getZipCode() + " phone ::" + person.getPhoneNumber()
-				+ " email ::" + person.getEmailAddress());
+		// setting value to variables
+		person1.setValue();
+
+		// displaying details
+		System.out.println("details ::\n" + person.toString());
+		System.out.println("details ::\n" + person1.toString());
+		person.getObj();
+
 	}
 
 }
