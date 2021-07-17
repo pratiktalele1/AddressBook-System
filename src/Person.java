@@ -143,22 +143,22 @@ public class Person {
 	}
 
 	//read details from phone directory
-//	public void readDetails() throws FileNotFoundException, IOException, ParseException {
-//		System.out.print("Enter name to read details- ");
-//		Scanner scanInput = new Scanner(System.in);
-//		String getInput = scanInput.next();
-//		this.firstName=getInput;
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
-//
-//		for (int i = 0; i <= jo.size(); i++) {
-//
-//			JSONArray array = (JSONArray) jo.get(firstName);
-//			System.out.println(array.get(i));
-//			break;
-//
-//		}
-//	}
+	public void readDetails() throws FileNotFoundException, IOException, ParseException {
+		System.out.print("Enter name to read details- ");
+		Scanner scanInput = new Scanner(System.in);
+		String getInput = scanInput.next();
+		this.firstName=getInput;
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
+
+		for (int i = 0; i <= jo.size(); i++) {
+
+			JSONArray array = (JSONArray) jo.get(firstName);
+			System.out.println(array.get(i));
+			break;
+
+		}
+	}
 
 	//update details from phone directory
 	public void updateDetails() throws IOException, ParseException {
