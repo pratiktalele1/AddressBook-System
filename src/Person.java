@@ -317,27 +317,27 @@ public class Person {
 	}
 	
 	//deleting details from phone directory
-//	public void deleteContact() throws FileNotFoundException, IOException, ParseException {
-//		System.out.print("Enter name to delete details- ");
-//		Scanner scanInput = new Scanner(System.in);
-//		String getInput = scanInput.next();
-//		this.firstName=getInput;
-//		
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
-//
-//		for (int i = 0; i <= jo.size(); i++) {
-//
-//			JSONArray array = (JSONArray) jo.remove(firstName);
-//			FileWriter fc = new FileWriter("./src/contactDetails.json");
-//			fc.write(jo.toJSONString());
-//			fc.flush();
-//			fc.close();
-//			
-//			break;
-//
-//		}
-//
-//	}
+	public void deleteContact() throws FileNotFoundException, IOException, ParseException {
+		System.out.print("Enter name to delete details- ");
+		Scanner scanInput = new Scanner(System.in);
+		String getInput = scanInput.next();
+		this.firstName=getInput;
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
+
+		for (int i = 0; i <= jo.size(); i++) {
+
+			JSONArray array = (JSONArray) jo.remove(firstName);
+			FileWriter fc = new FileWriter("./src/contactDetails.json");
+			fc.write(jo.toJSONString());
+			fc.flush();
+			fc.close();
+			
+			break;
+
+		}
+
+	}
 
 }
