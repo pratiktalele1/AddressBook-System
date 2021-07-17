@@ -119,7 +119,7 @@ public class Person {
 	}
 
 	//adding details for phone directory
-	public void addDetails() throws IOException {
+	public void addDetails(String str) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("first", firstName);
 		jsonObject.put("last", lastName);
@@ -135,7 +135,7 @@ public class Person {
 
 		completeRecord.put(firstName, insert);
 
-		FileWriter fw = new FileWriter("./src/contactDetails.json");
+		FileWriter fw = new FileWriter(str);
 		fw.write(completeRecord.toJSONString());
 		fw.flush();
 		fw.close();
@@ -143,13 +143,13 @@ public class Person {
 	}
 
 	//read details from phone directory
-	public void readDetails() throws FileNotFoundException, IOException, ParseException {
+	public void readDetails(String str) throws FileNotFoundException, IOException, ParseException {
 		System.out.print("Enter name to read details- ");
 		Scanner scanInput = new Scanner(System.in);
 		String getInput = scanInput.next();
 		this.firstName=getInput;
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
+		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader(str));
 
 		for (int i = 0; i <= jo.size(); i++) {
 
@@ -161,7 +161,7 @@ public class Person {
 	}
 
 	//update details from phone directory
-	public void updateDetails() throws IOException, ParseException {
+	public void updateDetails(String str) throws IOException, ParseException {
 		
 		System.out.print("Enter name to update details- ");
 		Scanner scanInput12 = new Scanner(System.in);
@@ -169,7 +169,7 @@ public class Person {
 		this.firstName=getName;
 		
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
+		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader(str));
 
 		System.out.print("1-first name\n" + "2-last name" + "3-address" + "4-city" + "5-email" + "6-phone" + "7-state"
 				+ "8-zip");
@@ -214,7 +214,7 @@ public class Person {
 		case 3: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -230,7 +230,7 @@ public class Person {
 		case 4: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -246,7 +246,7 @@ public class Person {
 		case 5: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -262,7 +262,7 @@ public class Person {
 		case 6: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -278,7 +278,7 @@ public class Person {
 		case 7: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -294,7 +294,7 @@ public class Person {
 		case 8: {
 			for (int i = 0; i < jo.size(); i++) {
 
-				JSONArray array = (JSONArray) jo.get("person1");
+				JSONArray array = (JSONArray) jo.get(firstName);
 				System.out.println(array.get(i));
 
 				JSONObject getValue = (JSONObject) array.get(i);
@@ -309,7 +309,7 @@ public class Person {
 		}
 		}
 
-		FileWriter fc = new FileWriter("./src/contactDetails.json");
+		FileWriter fc = new FileWriter(str);
 		fc.write(jo.toJSONString());
 		fc.flush();
 		fc.close();
@@ -317,19 +317,19 @@ public class Person {
 	}
 	
 	//deleting details from phone directory
-	public void deleteContact() throws FileNotFoundException, IOException, ParseException {
+	public void deleteContact(String str) throws FileNotFoundException, IOException, ParseException {
 		System.out.print("Enter name to delete details- ");
 		Scanner scanInput = new Scanner(System.in);
 		String getInput = scanInput.next();
 		this.firstName=getInput;
 		
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader("./src/contactDetails.json"));
+		JSONObject jo = (JSONObject) jsonParser.parse(new FileReader(str));
 
 		for (int i = 0; i <= jo.size(); i++) {
 
 			JSONArray array = (JSONArray) jo.remove(firstName);
-			FileWriter fc = new FileWriter("./src/contactDetails.json");
+			FileWriter fc = new FileWriter(str);
 			fc.write(jo.toJSONString());
 			fc.flush();
 			fc.close();
